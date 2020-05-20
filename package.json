@@ -1,0 +1,45 @@
+{
+  "name": "note",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write {components,pages,public,util}/**/*.js pages/*.css",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "jshintConfig": {
+    "esversion": 9
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote",
+      "jshint"
+    ],
+    "*.css": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "next": "^9.4.1",
+    "prism-react-renderer": "^1.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-markdown": "^4.3.1",
+    "react-transition-group": "^4.4.1",
+    "tailwindcss": "^1.4.6"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.2.0",
+    "husky": "^4.2.5",
+    "jshint": "^2.11.1",
+    "lint-staged": "^10.2.4",
+    "prettier": "^2.0.5"
+  }
+}
