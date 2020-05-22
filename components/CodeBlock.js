@@ -1,6 +1,8 @@
 import React from "react";
 import Highlight, { Prism } from "prism-react-renderer";
 import light from "prism-react-renderer/themes/github";
+import dark from 'prism-react-renderer/themes/duotoneDark'
+import {DarkModeContext} from './DarkModeContext'
 
 export const RawCodeBlock = ({
   code,
@@ -8,9 +10,12 @@ export const RawCodeBlock = ({
   className: extraClassName,
   disablePrefixes,
 }) => (
+<DarkModeContext.Consumer>
+  {darkMode =>
+
   <Highlight
     Prism={Prism}
-    theme={light}
+    theme={darkMode ? dark : light}
     code={code}
     language={
       language === "shell" ? "bash" : language === "text" ? "diff" : language
@@ -60,7 +65,8 @@ export const RawCodeBlock = ({
         </code>
       </pre>
     )}
-  </Highlight>
+  </Highlight>}
+</DarkModeContext.Consumer>
 );
 
 const CodeBlock = ({ code, language, disablePrefixes }) => (

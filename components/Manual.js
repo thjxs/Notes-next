@@ -16,7 +16,6 @@ function Manual() {
   const { query } = useRouter();
 
   const { path } = useMemo(() => {
-    console.log(query);
     const path =
       (Array.isArray(query.slug) ? query.slug.join("/") : query.path) ?? "";
     return {
@@ -174,7 +173,7 @@ function Manual() {
                         />
                         <div className="mx-4 flex flex-col justify-center">
                           <div className="font-bold text-gray-900 leading-6 text-2xl tracking-tight">
-                            Deno Manual
+                            Notes
                           </div>
                         </div>
                       </a>
@@ -191,13 +190,13 @@ function Manual() {
         </Transition>
 
         <div className="hidden md:flex md:flex-shrink-0">
-          <div className="flex flex-col w-72 border-r border-gray-200 bg-gray-50">
-            <div className="bg-gray-100 pb-4 pt-4 border-b border-gray-200">
+          <div className="flex flex-col w-72 border-r border-gray-200 bg-gray-50 dark:bg-gray-900 dark:border-gray-900">
+            <div className="bg-gray-100 dark:bg-gray-800 pb-4 pt-4 border-b border-gray-200">
               <Link href="/">
                 <a className="block flex items-center flex-shrink-0 px-4">
                   <img src="/logo.svg" alt="logo" className="w-auto h-12" />
                   <div className="mx-4 flex flex-col justify-center">
-                    <div className="font-bold text-gray-900 leading-6 text-2xl tracking-tight">
+                    <div className="font-bold text-gray-900 dark:text-gray-100 leading-6 text-2xl tracking-tight">
                       Notes
                     </div>
                   </div>
@@ -256,7 +255,7 @@ function Manual() {
                           href="/[...slug]"
                           as={pageList[pageIndex - 1].path}
                         >
-                          <a className="text-gray-900 hover:text-gray-600 font-normal">
+                          <a className="text-gray-900 hover:text-gray-600 font-normal dark:text-gray-200">
                             ← {pageList[pageIndex - 1].name}
                           </a>
                         </Link>
@@ -268,7 +267,7 @@ function Manual() {
                           href="/[...slug]"
                           as={pageList[pageIndex + 1].path}
                         >
-                          <a className="text-gray-900 hover:text-gray-600 font-normal">
+                          <a className="text-gray-900 hover:text-gray-600 font-normal dark:text-gray-200">
                             {pageList[pageIndex + 1].name} →
                           </a>
                         </Link>
@@ -328,7 +327,7 @@ function ToC({ tableOfContents, path }) {
                     className={`${
                       path === `/${entry.path}`
                         ? "text-blue-600 hover:text-blue-500 toc-active"
-                        : "text-gray-900 hover:text-gray-600"
+                        : "text-gray-900 hover:text-gray-600 dark:text-gray-100"
                     } font-bold`}
                   >
                     {entry.name}
@@ -343,7 +342,7 @@ function ToC({ tableOfContents, path }) {
                             className={`${
                               path === `/${slug}/${childSlug}`
                                 ? "text-blue-600 hover:text-blue-500 toc-active"
-                                : "text-gray-900 hover:text-gray-600"
+                              : "text-gray-900 hover:text-gray-600 dark:text-gray-100"
                             } font-normal`}
                           >
                             {name}
