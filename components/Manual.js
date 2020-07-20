@@ -163,7 +163,7 @@ function Manual() {
                       </svg>
                     </button>
                   </div>
-                  <div className="bg-gray-100 pb-4 pt-4 border-b border-gray-200">
+                  <div className="bg-gray-500 pb-4 pt-4 border-b border-gray-200">
                     <Link href="/readme">
                       <a className="block flex items-center flex-shrink-0 px-4">
                         <img
@@ -191,7 +191,7 @@ function Manual() {
 
         <div className="hidden md:flex md:flex-shrink-0">
           <div className="flex flex-col w-72 border-r border-gray-200 bg-gray-50 dark:bg-gray-900 dark:border-gray-900">
-            <div className="bg-gray-100 dark:bg-gray-800 pb-4 pt-4 border-b border-gray-200">
+            <div className="bg-yellow-500 dark:bg-gray-800 pb-4 pt-4 border-b border-gray-200">
               <Link href="/readme">
                 <a className="block flex items-center flex-shrink-0 px-4">
                   <img src="/logo.svg" alt="logo" className="w-auto h-12" />
@@ -240,7 +240,7 @@ function Manual() {
           </div>
 
           <main
-            className="flex-1 relative z-0 overflow-y-auto focus:outline-none"
+            className="flex-1 relative z-0 overflow-y-auto focus:outline-none scrollbar"
             tabIndex={0}
             ref={manualEl}
           >
@@ -316,7 +316,7 @@ function Manual() {
 
 function ToC({ tableOfContents, path }) {
   return (
-    <div className="pt-2 pb-8 h-0 flex-1 flex flex-col overflow-y-auto">
+    <div className="pt-2 pb-8 h-0 flex-1 flex flex-col overflow-y-auto scrollbar">
       <nav className="flex-1 px-4">
         <ol className="pl-2 list-decimal list-inside font-semibold nested">
           {tableOfContents &&
@@ -326,7 +326,7 @@ function ToC({ tableOfContents, path }) {
                   <a
                     className={`${
                       path === `/${entry.path}`
-                        ? 'text-blue-600 hover:text-blue-500 toc-active'
+                        ? 'text-orange-500 hover:text-orange-600 toc-active'
                         : 'text-gray-900 hover:text-gray-600 dark:text-gray-100'
                     } font-bold`}
                   >
@@ -341,7 +341,7 @@ function ToC({ tableOfContents, path }) {
                           <a
                             className={`${
                               path === `/${slug}/${childSlug}`
-                                ? 'text-blue-600 hover:text-blue-500 toc-active'
+                                ? 'text-orange-500 hover:text-orange-600 toc-active'
                                 : 'text-gray-900 hover:text-gray-600 dark:text-gray-100'
                             } font-normal`}
                           >

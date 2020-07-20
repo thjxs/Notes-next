@@ -13,6 +13,10 @@ body {
   margin: 0;
 }
 
+.scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .link {
   @apply text-blue-500;
   @apply transition;
