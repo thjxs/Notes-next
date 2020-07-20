@@ -20,7 +20,7 @@
   "lint-staged": {
     "*.js": [
       "prettier --write --single-quote",
-      "jshint"
+      "eslint --ext"
     ],
     "*.css": [
       "prettier --write"
@@ -33,12 +33,12 @@
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
     "react-transition-group": "^4.4.1",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.5"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^2.2.0",
+    "eslint": "^7.5.0",
+    "eslint-plugin-react": "^7.20.3",
     "husky": "^4.2.5",
-    "jshint": "^2.11.1",
     "lint-staged": "^10.2.4",
     "prettier": "^2.0.5"
   }

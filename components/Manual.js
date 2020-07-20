@@ -1,25 +1,25 @@
-import React, { useMemo, useState, useRef, useEffect } from "react";
-import Head from "next/head";
-import Link from "next/link";
-import { useRouter, Router } from "next/router";
-import Markdown from "./Markdown";
-import Transition from "./Transition";
+import React, { useMemo, useState, useRef, useEffect } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useRouter, Router } from 'next/router';
+import Markdown from './Markdown';
+import Transition from './Transition';
 import {
   getTableOfContents,
   getDocURL,
   getFileURL,
-} from "../util/manual_utils";
+} from '../util/manual_utils';
 
-const version = "master";
+const version = 'master';
 
 function Manual() {
   const { query } = useRouter();
 
   const { path } = useMemo(() => {
     const path =
-      (Array.isArray(query.slug) ? query.slug.join("/") : query.path) ?? "";
+      (Array.isArray(query.slug) ? query.slug.join('/') : query.path) ?? '';
     return {
-      path: path ? `/${path}` : "/readme",
+      path: path ? `/${path}` : '/readme',
     };
   });
 
@@ -36,17 +36,17 @@ function Manual() {
   };
 
   useEffect(() => {
-    Router.events.on("routeChangeStart", hideSidebar);
-    Router.events.on("routeChangeComplete", handleRouteChange);
+    Router.events.on('routeChangeStart', hideSidebar);
+    Router.events.on('routeChangeComplete', handleRouteChange);
 
     return () => {
-      Router.events.off("routeChangeStart", hideSidebar);
-      Router.events.off("routeChangeComplete", handleRouteChange);
+      Router.events.off('routeChangeStart', hideSidebar);
+      Router.events.off('routeChangeComplete', handleRouteChange);
     };
   });
 
   const scrollTOCIntoView = () =>
-    document.getElementsByClassName("toc-active")[0]?.scrollIntoView();
+    document.getElementsByClassName('toc-active')[0]?.scrollIntoView();
 
   useEffect(() => {
     if (showSidebar) {
@@ -59,11 +59,11 @@ function Manual() {
   const [content, setContent] = useState(null);
 
   useEffect(() => {
-    getTableOfContents(version ?? "master")
+    getTableOfContents(version ?? 'master')
       .then(setTableOfContents)
       .then(scrollTOCIntoView)
       .catch((e) => {
-        console.error("failed to fetch table of contents: ", e);
+        console.error('failed to fetch table of contents: ', e);
         setTableOfContents(null);
       });
   }, [version]);
@@ -84,7 +84,7 @@ function Manual() {
     }
   }, [tableOfContents]);
 
-  const sourceUrl = useMemo(() => getFileURL(version ?? "master", path), [
+  const sourceUrl = useMemo(() => getFileURL(version ?? 'master', path), [
     version,
     path,
   ]);
@@ -102,9 +102,9 @@ function Manual() {
       })
       .then(setContent)
       .catch((e) => {
-        console.error("Failed to fetch content: ", e);
+        console.error('Failed to fetch content: ', e);
         setContent(
-          "# 404 - Not Found\nWhoops, the page does not seem to exist."
+          '# 404 - Not Found\nWhoops, the page does not seem to exist.'
         );
       });
   }, [sourceUrl]);
@@ -164,7 +164,7 @@ function Manual() {
                     </button>
                   </div>
                   <div className="bg-gray-100 pb-4 pt-4 border-b border-gray-200">
-                    <Link href="/">
+                    <Link href="/readme">
                       <a className="block flex items-center flex-shrink-0 px-4">
                         <img
                           src="/logo.svg"
@@ -192,7 +192,7 @@ function Manual() {
         <div className="hidden md:flex md:flex-shrink-0">
           <div className="flex flex-col w-72 border-r border-gray-200 bg-gray-50 dark:bg-gray-900 dark:border-gray-900">
             <div className="bg-gray-100 dark:bg-gray-800 pb-4 pt-4 border-b border-gray-200">
-              <Link href="/">
+              <Link href="/readme">
                 <a className="block flex items-center flex-shrink-0 px-4">
                   <img src="/logo.svg" alt="logo" className="w-auto h-12" />
                   <div className="mx-4 flex flex-col justify-center">
@@ -210,7 +210,7 @@ function Manual() {
         </div>
         <div className="flex flex-col w-0 flex-1 overflow-hidden">
           <div className="relative z-10 flex-shrink-0 flex h-16 bg-white shadow md:hidden">
-            <Link href="/">
+            <Link href="/readme">
               <a className="px-4 flex items-center justify-center md:hidden">
                 <img src="/logo.svg" alt="logo" className="w-auto h-10" />
               </a>
@@ -326,8 +326,8 @@ function ToC({ tableOfContents, path }) {
                   <a
                     className={`${
                       path === `/${entry.path}`
-                        ? "text-blue-600 hover:text-blue-500 toc-active"
-                        : "text-gray-900 hover:text-gray-600 dark:text-gray-100"
+                        ? 'text-blue-600 hover:text-blue-500 toc-active'
+                        : 'text-gray-900 hover:text-gray-600 dark:text-gray-100'
                     } font-bold`}
                   >
                     {entry.name}
@@ -341,8 +341,8 @@ function ToC({ tableOfContents, path }) {
                           <a
                             className={`${
                               path === `/${slug}/${childSlug}`
-                                ? "text-blue-600 hover:text-blue-500 toc-active"
-                              : "text-gray-900 hover:text-gray-600 dark:text-gray-100"
+                                ? 'text-blue-600 hover:text-blue-500 toc-active'
+                                : 'text-gray-900 hover:text-gray-600 dark:text-gray-100'
                             } font-normal`}
                           >
                             {name}

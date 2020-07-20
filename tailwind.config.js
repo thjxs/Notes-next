@@ -1,9 +1,10 @@
 module.exports = {
-    theme: {
-        extend: {
-            screens: {
-                'dark': {'raw': '(prefers-color-scheme: dark)'}
-            }
-        }
-    }
-}
+  purge: ['./components/*.js', './pages/*.js'],
+  theme: {
+    extend: {
+      screens: {
+        dark: { raw: '(prefers-color-scheme: dark)' },
+      },
+    },
+  },
+};
