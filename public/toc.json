@@ -55,6 +55,7 @@
         "name": "electron",
         "path": "electron/readme",
         "children": {
+            "browser_window": "browser window",
             "ipc": "ipc"
         }
     },
@@ -66,6 +67,7 @@
         "name": "git",
         "path": "git/readme",
         "children": {
+            "git_flow": "git_flow",
             "git_history": "git_history",
             "git_hooks": "git_hooks",
             "git_rebase": "git_rebase",
@@ -134,6 +136,7 @@
         "children": {
             "apparmor": "apparmor",
             "auditd": "auditd",
+            "characters": "characters",
             "command": "command",
             "expect": "expect",
             "firewalld": "firewalld",
@@ -162,6 +165,7 @@
         "children": {
             "babel": "babel",
             "concurrently": "concurrently",
+            "mocha": "mocha",
             "webpack": "webpack"
         }
     },
