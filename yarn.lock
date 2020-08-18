@@ -1057,10 +1057,10 @@
   resolved "https://registry.npm.taobao.org/@next/react-refresh-utils/download/@next/react-refresh-utils-9.5.2.tgz#5d92d8ad0f2bd79de2290614e74e5a12a0cda02b"
   integrity sha1-XZLYrQ8r153iKQYU505aEqDNoCs=
 
-"@thjxs/gc-markdown@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.npm.taobao.org/@thjxs/gc-markdown/download/@thjxs/gc-markdown-0.3.0.tgz?cache=0&sync_timestamp=1597729839600&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40thjxs%2Fgc-markdown%2Fdownload%2F%40thjxs%2Fgc-markdown-0.3.0.tgz#f40c11b550a84f1cfc92805d1cb9c24608a0f25a"
-  integrity sha1-9AwRtVCoTxz8koBdHLnCRgig8lo=
+"@thjxs/gc-markdown@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.npm.taobao.org/@thjxs/gc-markdown/download/@thjxs/gc-markdown-0.3.1.tgz#480881496416592f5901df1763f69da8a859bc6a"
+  integrity sha1-SAiBSWQWWS9ZAd8XY/adqKhZvGo=
   dependencies:
     prism-react-renderer "^1.1.1"
     react-markdown "^4.3.1"
@@ -2484,9 +2484,9 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     stream-shift "^1.0.0"
 
 electron-to-chromium@^1.3.488, electron-to-chromium@^1.3.523:
-  version "1.3.533"
-  resolved "https://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.533.tgz?cache=0&sync_timestamp=1597289736433&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.533.tgz#d7e5ca4d57e9bc99af87efbe13e7be5dde729b0f"
-  integrity sha1-1+XKTVfpvJmvh+++E+e+Xd5ymw8=
+  version "1.3.534"
+  resolved "https://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.534.tgz?cache=0&sync_timestamp=1597723635889&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.534.tgz#fc7af8518dd00a5b22a24aed3f116b5d097e2330"
+  integrity sha1-/Hr4UY3QClsiokrtPxFrXQl+IzA=
 
 elliptic@^6.5.3:
   version "6.5.3"
