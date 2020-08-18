@@ -2,7 +2,7 @@ import React, { useMemo, useState, useRef, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter, Router } from 'next/router';
-import Markdown from './Markdown';
+import Markdown from '@thjxs/gc-markdown';
 import Transition from './Transition';
 import {
   getTableOfContents,
