@@ -27,19 +27,21 @@
     ]
   },
   "dependencies": {
-    "@thjxs/gc-markdown": "0.3.1",
-    "next": "^9.5.4",
+    "@thjxs/gc-markdown": "0.4.2",
+    "autoprefixer": "^10.2.5",
+    "next": "^10",
+    "postcss": "^8.2.9",
     "prism-react-renderer": "^1.1.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-markdown": "^4.3.1",
+    "react": "^17",
+    "react-dom": "^17",
+    "react-markdown": "^5",
     "react-transition-group": "^4.4.1",
-    "tailwindcss": "^1.5"
+    "tailwindcss": "^2"
   },
   "devDependencies": {
     "eslint": "^7.5.0",
     "eslint-plugin-react": "^7.20.3",
-    "husky": "^4.2.5",
+    "husky": "^4",
     "lint-staged": "^10.2.4",
     "prettier": "^2.0.5"
   }

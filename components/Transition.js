@@ -43,7 +43,7 @@ function CSSTransitionWraper({
       unmountOnExit
       in={show}
       addEndListener={(node, done) => {
-        node.addEventListener('transitionend', done, false);
+        node.addEventListener("transitionend", done, false);
       }}
       onEnter={(node) => {
         addClasses(node, [...enterClasses, ...enterFromClasses]);

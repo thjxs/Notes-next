@@ -1,15 +1,15 @@
-import React from 'react';
-import App from 'next/app';
-import Head from 'next/head';
-import './app.css';
-import { DarkModeContext } from '@thjxs/gc-markdown';
+import React from "react";
+import App from "next/app";
+import Head from "next/head";
+import "./app.css";
+import { ThemeContext } from "@thjxs/gc-markdown";
 
 export default class NoteApp extends App {
   state = {
     darkMode: false,
   };
   componentDidMount() {
-    const mm = window.matchMedia('(prefers-color-scheme: dark)');
+    const mm = window.matchMedia("(prefers-color-scheme: dark)");
     this.setState({
       darkMode: mm.matches,
     });
@@ -26,9 +26,9 @@ export default class NoteApp extends App {
         <Head>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <DarkModeContext.Provider value={darkMode}>
+        <ThemeContext.Provider value={darkMode}>
           <Component {...pageProps} />
-        </DarkModeContext.Provider>
+        </ThemeContext.Provider>
       </div>
     );
   }

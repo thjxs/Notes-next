@@ -1,25 +1,25 @@
-import React, { useMemo, useState, useRef, useEffect } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import { useRouter, Router } from 'next/router';
-import Markdown from '@thjxs/gc-markdown';
-import Transition from './Transition';
+import React, { useMemo, useState, useRef, useEffect } from "react";
+import Head from "next/head";
+import Link from "next/link";
+import { useRouter, Router } from "next/router";
+import Markdown from "@thjxs/gc-markdown";
+import Transition from "./Transition";
 import {
   getTableOfContents,
   getDocURL,
   getFileURL,
-} from '../util/manual_utils';
+} from "../util/manual_utils";
 
-const version = 'master';
+const version = "master";
 
 function Manual() {
   const { query } = useRouter();
 
   const { path } = useMemo(() => {
     const path =
-      (Array.isArray(query.slug) ? query.slug.join('/') : query.path) ?? '';
+      (Array.isArray(query.slug) ? query.slug.join("/") : query.path) ?? "";
     return {
-      path: path ? `/${path}` : '/readme',
+      path: path ? `/${path}` : "/readme",
     };
   });
 
@@ -36,17 +36,17 @@ function Manual() {
   };
 
   useEffect(() => {
-    Router.events.on('routeChangeStart', hideSidebar);
-    Router.events.on('routeChangeComplete', handleRouteChange);
+    Router.events.on("routeChangeStart", hideSidebar);
+    Router.events.on("routeChangeComplete", handleRouteChange);
 
     return () => {
-      Router.events.off('routeChangeStart', hideSidebar);
-      Router.events.off('routeChangeComplete', handleRouteChange);
+      Router.events.off("routeChangeStart", hideSidebar);
+      Router.events.off("routeChangeComplete", handleRouteChange);
     };
   });
 
   const scrollTOCIntoView = () =>
-    document.getElementsByClassName('toc-active')[0]?.scrollIntoView();
+    document.getElementsByClassName("toc-active")[0]?.scrollIntoView();
 
   useEffect(() => {
     if (showSidebar) {
@@ -59,11 +59,11 @@ function Manual() {
   const [content, setContent] = useState(null);
 
   useEffect(() => {
-    getTableOfContents(version ?? 'master')
+    getTableOfContents(version ?? "master")
       .then(setTableOfContents)
       .then(scrollTOCIntoView)
       .catch((e) => {
-        console.error('failed to fetch table of contents: ', e);
+        console.error("failed to fetch table of contents: ", e);
         setTableOfContents(null);
       });
   }, [version]);
@@ -84,7 +84,7 @@ function Manual() {
     }
   }, [tableOfContents]);
 
-  const sourceUrl = useMemo(() => getFileURL(version ?? 'master', path), [
+  const sourceUrl = useMemo(() => getFileURL(version ?? "master", path), [
     version,
     path,
   ]);
@@ -102,9 +102,9 @@ function Manual() {
       })
       .then(setContent)
       .catch((e) => {
-        console.error('Failed to fetch content: ', e);
+        console.error("Failed to fetch content: ", e);
         setContent(
-          '# 404 - Not Found\nWhoops, the page does not seem to exist.'
+          "# 404 - Not Found\nWhoops, the page does not seem to exist."
         );
       });
   }, [sourceUrl]);
@@ -326,8 +326,8 @@ function ToC({ tableOfContents, path }) {
                   <a
                     className={`${
                       path === `/${entry.path}`
-                        ? 'text-orange-500 hover:text-orange-600 toc-active'
-                        : 'text-gray-900 hover:text-gray-600 dark:text-gray-100'
+                        ? "text-orange-500 hover:text-orange-600 toc-active"
+                        : "text-gray-900 hover:text-gray-600 dark:text-gray-100"
                     } font-bold`}
                   >
                     {entry.name}
@@ -341,8 +341,8 @@ function ToC({ tableOfContents, path }) {
                           <a
                             className={`${
                               path === `/${slug}/${childSlug}`
-                                ? 'text-orange-500 hover:text-orange-600 toc-active'
-                                : 'text-gray-900 hover:text-gray-600 dark:text-gray-100'
+                                ? "text-orange-500 hover:text-orange-600 toc-active"
+                                : "text-gray-900 hover:text-gray-600 dark:text-gray-100"
                             } font-normal`}
                           >
                             {name}
