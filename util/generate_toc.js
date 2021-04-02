@@ -1,6 +1,5 @@
 const fs = require("fs");
 const os = require('os')
-console.log(os.homedir());
 
 const path = os.homedir() + '/Notes'
 
@@ -53,5 +52,3 @@ fs.writeFile('../public/toc.json', data, (err => {
         throw err
     }
 }))
-
-console.log(item);

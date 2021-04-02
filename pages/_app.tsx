@@ -3,20 +3,23 @@ import App from "next/app";
 import Head from "next/head";
 import "./app.css";
 import { ThemeContext } from "@thjxs/gc-markdown";
+import { Theme } from '@thjxs/gc-markdown/lib/interface';
 
 export default class NoteApp extends App {
-  state = {
-    darkMode: false,
+  state: {darkMode: Theme} = {
+    darkMode: 'light',
   };
   componentDidMount() {
     const mm = window.matchMedia("(prefers-color-scheme: dark)");
     this.setState({
-      darkMode: mm.matches,
+      darkMode: mm.matches ? 'dark' : 'light',
     });
 
-    mm.addListener((e) => {
-      this.setState({ darkMode: e.matches });
-    });
+    mm.addEventListener('change', (e) => {
+      this.setState({
+        darkMode: e.matches ? 'dark' : 'light'
+      })
+    })
   }
   render() {
     const { darkMode } = this.state;

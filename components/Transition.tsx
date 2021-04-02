@@ -1,7 +1,11 @@
-import React, { useRef, useEffect, useContext } from "react";
+import React, { useRef, useEffect, useContext, ReactNode } from "react";
 import { CSSTransition } from "react-transition-group";
 
-const TransitionContext = React.createContext({ parent: {} });
+const TransitionContext = React.createContext<{parent: {show: boolean; isInitialRender: boolean; appear: any}}>({ parent: {
+  show: false,
+  appear: '',
+  isInitialRender: false
+} });
 
 function useIsInitialRender() {
   const isInitialRender = useRef(true);
@@ -21,7 +25,7 @@ function CSSTransitionWraper({
   leaveTo = "",
   appear,
   children,
-}) {
+}: TransitionProps) {
   const enterClasses = enter.split(" ").filter((s) => s.length);
   const enterFromClasses = enterFrom.split(" ").filter((s) => s.length);
   const enterToClasses = enterTo.split(" ").filter((s) => s.length);
@@ -29,11 +33,11 @@ function CSSTransitionWraper({
   const leaveFromClasses = leaveFrom.split(" ").filter((s) => s.length);
   const leaveToClasses = leaveTo.split(" ").filter((s) => s.length);
 
-  function addClasses(node, classes) {
+  function addClasses(node: HTMLElement, classes: string[]) {
     classes.length && node.classList.add(...classes);
   }
 
-  function removeClasses(node, classes) {
+  function removeClasses(node: HTMLElement, classes: string[]) {
     classes.length && node.classList.remove(...classes);
   }
 
@@ -45,14 +49,14 @@ function CSSTransitionWraper({
       addEndListener={(node, done) => {
         node.addEventListener("transitionend", done, false);
       }}
-      onEnter={(node) => {
+      onEnter={(node: HTMLElement) => {
         addClasses(node, [...enterClasses, ...enterFromClasses]);
       }}
-      onEntering={(node) => {
+      onEntering={(node: HTMLElement) => {
         removeClasses(node, enterFromClasses);
         addClasses(node, enterToClasses);
       }}
-      onEntered={(node) => {
+      onEntered={(node: HTMLElement) => {
         removeClasses(node, [...enterToClasses, ...enterClasses]);
       }}
       onExit={(node) => {
@@ -70,13 +74,22 @@ function CSSTransitionWraper({
     </CSSTransition>
   );
 }
-
-function Transition({ show, appear, ...rest }) {
+interface TransitionProps {
+  show?: boolean;
+  enter?: string;
+  enterFrom?: string;
+  enterTo?: string;
+  leave?: string;
+  leaveFrom?: string;
+  leaveTo?: string;
+  appear?: any;
+  children: ReactNode
+}
+function Transition({ show, appear, ...rest }: TransitionProps) {
   const { parent } = useContext(TransitionContext);
   const isInitialRender = useIsInitialRender();
-  const isChild = show === undefined;
 
-  if (isChild) {
+  if (show === undefined) {
     return (
       <CSSTransitionWraper
         appear={parent.appear || !parent.isInitialRender}

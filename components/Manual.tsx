@@ -10,7 +10,7 @@ import {
   getFileURL,
 } from "../util/manual_utils";
 
-const version = "master";
+const version = "main";
 
 function Manual() {
   const { query } = useRouter();
@@ -21,16 +21,16 @@ function Manual() {
     return {
       path: path ? `/${path}` : "/readme",
     };
-  });
+  }, [query.slug, query.path]);
 
   const [pageIndex, setPageIndex] = useState(0);
-  const [pageList, setPageList] = useState([]);
+  const [pageList, setPageList] = useState<PageItem[]>([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const hideSidebar = () => setShowSidebar(false);
 
-  const manualEl = useRef(null);
+  const manualEl = useRef<HTMLElement>(null);
 
-  const handleRouteChange = (url) => {
+  const handleRouteChange = (url: string) => {
     manualEl.current?.scrollTo(0, 0);
     setPageIndex(pageList.findIndex((page) => page.path === url));
   };
@@ -54,12 +54,12 @@ function Manual() {
     }
   }, [showSidebar]);
 
-  const [tableOfContents, setTableOfContents] = useState(null);
+  const [tableOfContents, setTableOfContents] = useState<TOC|null>(null);
 
-  const [content, setContent] = useState(null);
+  const [content, setContent] = useState<string|null>(null);
 
   useEffect(() => {
-    getTableOfContents(version ?? "master")
+    getTableOfContents()
       .then(setTableOfContents)
       .then(scrollTOCIntoView)
       .catch((e) => {
@@ -70,7 +70,7 @@ function Manual() {
 
   useEffect(() => {
     if (tableOfContents) {
-      const tempList = [];
+      const tempList: PageItem[] = [];
       Object.entries(tableOfContents).map(([slug, entry]) => {
         tempList.push({ path: `/${entry.path}`, name: entry.name });
         if (entry.children) {
@@ -84,7 +84,7 @@ function Manual() {
     }
   }, [tableOfContents]);
 
-  const sourceUrl = useMemo(() => getFileURL(version ?? "master", path), [
+  const sourceUrl = useMemo(() => getFileURL(path), [
     version,
     path,
   ]);
@@ -314,7 +314,7 @@ function Manual() {
   );
 }
 
-function ToC({ tableOfContents, path }) {
+function ToC({ tableOfContents, path }: {tableOfContents: TOC; path: string}) {
   return (
     <div className="pt-2 pb-8 h-0 flex-1 flex flex-col overflow-y-auto scrollbar">
       <nav className="flex-1 px-4">
