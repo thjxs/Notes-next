@@ -15,7 +15,7 @@
     "@types/react": "^17.0.3",
     "@types/react-transition-group": "^4.4.1",
     "autoprefixer": "^10.2.5",
-    "next": "^11",
+    "next": "^12",
     "postcss": "^8.2.10",
     "prism-react-renderer": "^1.1.0",
     "react": "^17",
